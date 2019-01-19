@@ -111,6 +111,7 @@ int do_fork()
 
   /* Find a free pid for the child and put it in the table. */
   new_pid = get_free_pid();
+  printf("Minix: PID %d created\n", new_pid);
   rmc->mp_pid = new_pid;	/* assign pid to child */
 
   memset(&m, 0, sizeof(m));
@@ -276,6 +277,7 @@ int dump_core;			/* flag indicating whether to dump core */
 	dump_core = FALSE;
 
   proc_nr = (int) (rmp - mproc);	/* get process slot number */
+  printf("Minix: PID %d exited\n", proc_nr);
   proc_nr_e = rmp->mp_endpoint;
 
   /* Remember a session leader's process group. */
